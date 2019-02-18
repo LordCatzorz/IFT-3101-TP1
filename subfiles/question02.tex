@@ -4,6 +4,18 @@
 \begin{document}
 \section*{Question 2}
 \subsection*{(a)}
+\begin{align*}
+&\text{L'alphabet sur $\acc{a|b|c}$}\\
+{\bf{idc}} \rightarrow& \pars{a|b|c}^*\\
+&\text{Voit un $b$, puis un $b$, plus un $c$}\\
+{\bf{bbc}} \rightarrow& {\bf{idc}}\cdot b \cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot c\cdot{\bf{idc}}\\
+&\text{Voit un $b$, puis un $c$, plus un $b$}\\
+{\bf{bcb}} \rightarrow& {\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot c\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\\
+&\text{Voit un $c$, puis un $b$, plus un $b$}\\
+{\bf{cbb}} \rightarrow& {\bf{idc}}\cdot c\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\\
+&\text{Une des trois règles précédentes}\\
+{\bf{result}} \rightarrow& \pars{{\bf{bbc}} | {\bf{bcb}} | {\bf{cbb}}}
+\end{align*}
 \subsection*{(b)}
 \subsection*{(c)}
 \subsection*{(d)}
