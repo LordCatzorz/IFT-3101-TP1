@@ -58,14 +58,26 @@
     &\text{Nombre dont nous savons que la valeur plus grande}\\
     &\text{ou égale à 5, entouré de n'importe quoi.}\\
     {\bf{sumAtLeastFive}} \rightarrow& 
-        {\bf{idc}}\pars{{\bf{sumFive}}|{\bf{other}}}{\bf{idc}}\\&
-\end{align*}
-
-
-\begin{align*}
+        {\bf{idc}}\cdot\pars{{\bf{sumFive}}|{\bf{other}}}\cdot{\bf{idc}}\\&
 \end{align*}
 
 \subsection*{(c)}
+\begin{align*}
+    {\bf{abc}} \rightarrow&
+        abc\\
+    {\bf{bcd}} \rightarrow&
+        bcd\\
+    {\bf{abcd}} \rightarrow&
+        abcd\\
+    {\bf{idc}} \rightarrow&
+        \pars{a|b|c|d}^*\\
+    {\bf{abcEtbcd}} \rightarrow&
+        {\bf{abc}} \cdot {\bf{idc}} \cdot {\bf{bcd}}\\&
+        |{\bf{bcd}} \cdot {\bf{idc}} \cdot {\bf{abc}}\\
+    {\bf{result}} \rightarrow&
+    {\bf{idc}} \cdot \pars{{\bf{abcd}}|{\bf{abcEtbcd}}} \cdot {\bf{idc}}
+\end{align*}
+
 \subsection*{(d)}
 \subsection*{(e)}
 \end{document}
