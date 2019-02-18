@@ -5,20 +5,66 @@
 \section*{Question 2}
 \subsection*{(a)}
 \begin{align*}
-&\text{L'alphabet sur $\acc{a,b,c}$}\\
-{\bf{alpha}} \rightarrow& a|b|c\\
-&\text{Tous mots de l'alphabet}\\
-{\bf{idc}} \rightarrow& \pars{{\bf{alpha}}}^*\\
-&\text{Voit un $b$, puis un $b$, plus un $c$}\\
-{\bf{bbc}} \rightarrow& {\bf{idc}}\cdot b \cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot c\cdot{\bf{idc}}\\
-&\text{Voit un $b$, puis un $c$, plus un $b$}\\
-{\bf{bcb}} \rightarrow& {\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot c\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\\
-&\text{Voit un $c$, puis un $b$, plus un $b$}\\
-{\bf{cbb}} \rightarrow& {\bf{idc}}\cdot c\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\\
-&\text{Une des trois règles précédentes}\\
-{\bf{result}} \rightarrow& \pars{{\bf{bbc}} | {\bf{bcb}} | {\bf{cbb}}}
+    &\text{L'alphabet sur $\acc{a,b,c}$}\\
+    {\bf{alpha}} \rightarrow& a|b|c\\
+    &\text{Tous mots de l'alphabet}\\
+    {\bf{idc}} \rightarrow& \pars{{\bf{alpha}}}^*\\
+    &\text{Voit un $b$, puis un $b$, plus un $c$}\\
+    {\bf{bbc}} \rightarrow& {\bf{idc}}\cdot b \cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot c\cdot{\bf{idc}}\\
+    &\text{Voit un $b$, puis un $c$, plus un $b$}\\
+    {\bf{bcb}} \rightarrow& {\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot c\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\\
+    &\text{Voit un $c$, puis un $b$, plus un $b$}\\
+    {\bf{cbb}} \rightarrow& {\bf{idc}}\cdot c\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\cdot b\cdot{\bf{idc}}\\
+    &\text{Une des trois règles précédentes}\\
+    {\bf{result}} \rightarrow& \pars{{\bf{bbc}} | {\bf{bcb}} | {\bf{cbb}}}
 \end{align*}
+
 \subsection*{(b)}
+\begin{align*}
+    &\text{Tous les mots dont sommes égale 0}\\
+    {\bf{sumZero}} \rightarrow&
+        \pars{0}^*\\
+    &\text{Tous les mots dont sommes égale 1}\\
+    {\bf{sumOne}} \rightarrow&
+        {\bf{sumZero}}\cdot 1 \cdot{\bf{sumZero}}\\
+    &\text{Tous les mots dont sommes égale 2}\\
+    {\bf{sumTwo}} \rightarrow&
+        {\bf{sumZero}}\cdot 2 \cdot{\bf{sumZero}}\\&
+        |{\bf{sumOne}}\cdot{\bf{sumOne}} \\
+    &\text{Tous les mots dont sommes égale 3}\\
+    {\bf{sumThree}} \rightarrow&
+        {\bf{sumZero}}\cdot 3 \cdot{\bf{sumZero}}\\&
+        |{\bf{sumTwo}}\cdot{\bf{sumOne}}\\&
+        |{\bf{sumOne}}\cdot{\bf{sumTwo}} \\
+    &\text{Tous les mots dont sommes égale 4}\\
+    {\bf{sumFour}} \rightarrow& 
+        {\bf{sumZero}}\cdot 4 \cdot{\bf{sumZero}} \\&
+        |{\bf{sumTwo}}\cdot{\bf{sumTwo}}\\&
+        |{\bf{sumThree}}\cdot{\bf{sumOne}}\\&
+        |{\bf{sumOne}}\cdot{\bf{sumThree}}\\
+    &\text{Tous les mots dont sommes égale 5}\\
+    {\bf{sumFive}} \rightarrow& 
+        {\bf{sumZero}}\cdot 5 \cdot{\bf{sumZero}} \\&
+        |{\bf{sumFour}}\cdot {\bf{sumOne}}\\&
+        |{\bf{sumOne}}\cdot {\bf{sumFour}}\\&
+        |{\bf{sumTwo}}\cdot {\bf{sumThree}}\\&
+        |{\bf{sumThree}}\cdot {\bf{sumTwo}}\\
+    &\text{Les symboles 6 à 9 }\\
+    {\bf{other}} \rightarrow& 
+        \pars{6|7|8|9}\\
+    &\text{Tous les mots possibles sur l'alphabet}\\
+    {\bf{idc}} \rightarrow& 
+        \pars{0|1|2|3|4|5|6|7|8|9}^*\\
+    &\text{Nombre dont nous savons que la valeur plus grande}\\
+    &\text{ou égale à 5, entouré de n'importe quoi.}\\
+    {\bf{sumAtLeastFive}} \rightarrow& 
+        {\bf{idc}}\pars{{\bf{sumFive}}|{\bf{other}}}{\bf{idc}}\\&
+\end{align*}
+
+
+\begin{align*}
+\end{align*}
+
 \subsection*{(c)}
 \subsection*{(d)}
 \subsection*{(e)}
