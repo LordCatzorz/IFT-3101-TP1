@@ -79,5 +79,42 @@
 \end{align*}
 
 \subsection*{(d)}
+\begin{align*}
+    {\bf{idc}} \rightarrow&
+        \pars{a|b|c}^*\\
+    {\bf{abc}} \rightarrow&
+        abc\\
+    {\bf{result}} \rightarrow&
+        {\bf{idc}} \cdot {\bf{abc}} \cdot {\bf{idc}} \cdot a  \cdot {\bf{idc}} \cdot b \cdot {\bf{idc}}\\&
+        |{\bf{idc}} \cdot c \cdot {\bf{idc}} \cdot {\bf{abc}} \cdot {\bf{idc}}
+\end{align*}
+
 \subsection*{(e)}
+\begin{align*}
+    {\bf{bORd}} \rightarrow&
+        b|d\\
+    {\bf{NOTa}} \rightarrow&
+        c | {\bf{bORd}} \\
+    {\bf{OneOrMoreA}} \rightarrow&
+        a \cdot a^*\\
+    {\bf{aNOTc}} \rightarrow& 
+        a \cdot a^* \cdot {\bf{bORd}}\\ 
+    {\bf{aANDc}} \rightarrow& 
+        {\bf{OneOrMoreA}} \cdot c\\ 
+    {\bf{OneOrMoreAC}} \rightarrow& 
+        {\bf{aANDc}} \cdot {\bf{aANDc}}^*\\ 
+    {\bf{cORbORaNOTc}}\rightarrow& 
+        c | b | {\bf{aNOTc}}\\ 
+    {\bf{acaNOTd}} \rightarrow& 
+        {\bf{OneOrMoreAC}} \cdot {\bf{cORbORaNOTc}}\\ 
+    {\bf{acdNOTc}} \rightarrow& 
+        {\bf{OneOrMoreAC}} \cdot d \cdot \pars{a|b|d}\\ 
+    {\bf{begin}}\rightarrow&
+        {\bf{NOTa}} | {\bf{aNOTc}} | {\bf{acaNOTd}} | {\bf{acdNOTc}}  \\
+    {\bf{end}} \rightarrow&
+        \epsilon| a^+ | \pars{a^+c}^+a^* | \pars{a^+c}^+d \\
+    {\bf{result}} \rightarrow&
+        {\bf{begin}}^* \cdot {\bf{end}} \\
+\end{align*}
+
 \end{document}
