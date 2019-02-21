@@ -1,9 +1,11 @@
 % !TeX root = ../main.tex
 \documentclass[class=article]{standalone}
-
 \begin{document}
 \section*{Question 3}
-
+\vfill
+[Voir page suivante]
+\vfill
+\begin{sidewaysfigure}
 \begin{tikzpicture}[->,shorten >=1pt,auto,node distance=3cm, semithick]
     \tikzstyle{every state}=[draw=black,text=black]
     \node[state, initial] (0) {0};
@@ -11,10 +13,9 @@
     \node[state] [right =of a] (b) {2};
     \node[state] [below right =of 0] (c) {3};
     \node[state] [right =of c] (d) {4};
-    \node[state, accepting, label=below right:{\bf return(idRep, getoken())}] [below right =of b] (rep) {5};
-    
+    \node[state] [below right =of b] (rep) {5};
+    \node[state, accepting,label=above right:{\bf *},label=below:{\bf return(idRep, getoken())}] [right =of rep] (end) {6};
     \path
-
     (0) edge [bend left] node {$a$} (a)
     (0) edge [bend left=70]node {$b$} (b)
     (0) edge [bend right] node {$c$} (c)
@@ -42,8 +43,21 @@
 
     (rep) edge [loop right] node {$a,b,c,d$} (rep)
 
-    
+    (rep) edge [bend left] node {\bf other} (end)
     ; 
 \end{tikzpicture}
+
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=3cm, semithick]
+    \tikzstyle{every state}=[draw=black,text=black]
+    \node[state, initial] (7) {7};
+    \node[state] [right =of 0] (8) {8};
+    \node[state, accepting,label=above right:{\bf *},label=right:{\bf return(idRep, getoken())}] [right =of 8] (9) {9};
+    \path
+    (7) edge node {$a, b, c, d$} (8)
+    (8) edge [loop above]node {$a, b, c, d$} (8)
+    (8) edge node {\bf other} (9)    
+    ; 
+\end{tikzpicture}
+\end{sidewaysfigure}
 
 \end{document}
