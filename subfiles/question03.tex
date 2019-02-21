@@ -3,4 +3,47 @@
 
 \begin{document}
 \section*{Question 3}
+
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=3cm, semithick]
+    \tikzstyle{every state}=[draw=black,text=black]
+    \node[state, initial] (0) {0};
+    \node[state] [above right =of 0] (a) {1};
+    \node[state] [right =of a] (b) {2};
+    \node[state] [below right =of 0] (c) {3};
+    \node[state] [right =of c] (d) {4};
+    \node[state, accepting, label=below right:{\bf return(idRep, getoken())}] [below right =of b] (rep) {5};
+    
+    \path
+
+    (0) edge [bend left] node {$a$} (a)
+    (0) edge [bend left=70]node {$b$} (b)
+    (0) edge [bend right] node {$c$} (c)
+    (0) edge [bend right=80]node {$d$} (d)
+    (a) edge [bend left=90] node {$a$} (rep)
+    (b) edge [bend left] node {$b$} (rep)
+    (c) edge [bend right=90] node {$c$} (rep)
+    (d) edge [bend right] node {$d$} (rep)
+
+    (a) edge [bend left] node {$b$} (b)
+    (a) edge  node {$c$} (c)
+    (a) edge [bend left] node {$d$} (d)
+
+    (b) edge  node {$a$} (a)
+    (b) edge [bend left=10] node {$c$} (c)
+    (b) edge  node {$d$} (d)
+
+    (c) edge [bend left] node {$a$} (a)
+    (c) edge [bend left=10] node {$b$} (b)
+    (c) edge [bend right] node {$d$} (d)
+
+    (d) edge [bend left] node {$a$} (a)
+    (d) edge [bend right] node {$b$} (b)
+    (d) edge  node {$c$} (c)
+
+    (rep) edge [loop right] node {$a,b,c,d$} (rep)
+
+    
+    ; 
+\end{tikzpicture}
+
 \end{document}
