@@ -3,4 +3,56 @@
 
 \begin{document}
 \section*{Question 5}
+
+Toutes les chaînes de $L_5$ sont généré par $G_5$. Preuve par induction sur le nombre de dérivation.
+
+{\bf Case de base}
+
+Un dérivation de $S$ en une étape a bien deux fois plus de $a$ que de $b$. 
+
+La preuve, c'est que la seule dérivation possible en une 
+étape est $S \Rightarrow \epsilon$. Qui contient bien deux fois 
+plus de $a$ que de $b$: 
+
+$|\epsilon|_a - 2|\epsilon|_b = 0 - 2\cdot0 = 0$,
+donc il y a 2 fois plus de $a$ que de $b$.
+
+{\bf Hypothèse d'induction}
+
+Supposons que toutes les chaines répondant à la spécification
+de longueur inférieure à $3n$, pour $n \geq 1$, sont générer par $G_5$,
+alors toutes chaîne $w$ de longeure égales à $3n$ sont 
+est aussi générée par $G_5$, 
+(Notons aussi que toutes les chaines de $L_5$ 
+sont de longueur multiple de 3). 
+
+La preuve, 
+
+Si $w$ commence par un $b$, alors deux $a$ doivent 
+le suivre selon la seule dérivation permettant un $b$ au début: $S \Rightarrow bSaSa$.
+Alors $w$ peut être écrite sous la forme 
+$w = bxayaz$, où $x$, $y$ et $z$ 
+sont tous de longeur inférieure à $3n$ et dont leur concaténation
+est de longueur $3n-3$ 
+et donc répondent au critères de $L_5$.
+
+
+Si $w$ fini par un $b$, alors deux $a$ doivent 
+le précédé selon la seule dérivation permettant un $b$ à la fin: $S \Rightarrow aSaSb$.
+Alors $w$ peut être écrite sous la forme 
+$w = xaxayb$, où $x$, $y$ et $z$
+sont tous de longeur inférieure à $3n$ et dont leur concaténation
+est de longueur $3n-3$ et donc répondent au critères de $L_5$.
+
+Si $w$ commence et fini par un $a$, alors un $b$ doit se trouver entre
+les deux selon la dérivation $S \Rightarrow aSbSa$.
+Alors $w$ peut être écrit sous la forme
+$axbyz$ où $a$ et $y$
+sont tous de longeur inférieure à $3n$ et dont leur concaténation
+est de longueur $3n-3$ et donc répondent au critères de $L_5$.
+
+Tous les cas possible de $w$ ont été énumérés, donc $L_5 \subseteq L(G_5)$
+
+
+
 \end{document}
