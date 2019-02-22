@@ -3,4 +3,65 @@
 
 \begin{document}
 \section*{Question 4}
+
+\begin{lstlisting}
+int lexical_analyser()
+{
+    start = 0;
+    state = start;
+    forward = token_beginning;
+    white (true)
+    {
+        switch(state)
+        {
+            case 1:
+                c := buffer[foward];
+                foward++;
+                if (IsDigit(c)) { state = 2; } 
+                else if (c == '-') {state = 3; } 
+                else { state = fail(); }
+                break;
+            case 2:
+                c := buffer[foward];
+                foward++;
+                if (IsDigit(c)) { state = 2; } 
+                else if (c == '.') {state = 5; } 
+                else { state = 4; }
+                break;
+            case 3:
+                c := buffer[foward];
+                foward++;
+                if (IsDigit(c)) { state = 2; } 
+                else { state = fail(); }
+                break;
+            case 4:
+                foward--;
+                jeton = gettoken();
+                attr = parse_num();
+                token_beginning = foward;
+                return jeton;
+            case 5:
+                c := buffer[foward];
+                foward++;
+                if (IsDigit(c)) { state = 6; } 
+                else { state = fail(); }
+                break;
+            case 6:
+                c := buffer[foward];
+                foward++;
+                if (IsDigit(c)) { state = 6; } 
+                else { state = 7; }
+                break;
+            case 7:
+                foward--;
+                jeton = gettoken();
+                attr = parse_num();
+                token_beginning = foward;
+                return jeton;
+        }
+    }
+}
+
+\end{lstlisting}
+
 \end{document}
