@@ -3,4 +3,458 @@
 
 \begin{document}
 \section*{Question 8}
+
+Éliminons les récusions à gauche de la grammaires suivantes:
+\begin{align*}
+    E &\rightarrow E \, \textbf{ou} \, T \mid T\\
+    T &\rightarrow T \, \textbf{et} \, F \mid F\\
+    F &\rightarrow \textbf{faux} \, F \mid A\\
+    A &\rightarrow ( \, E \, ) \, \mid \textbf{faux} \, \mid \textbf{vrai} \, \mid \textbf{id}
+\end{align*}
+
+Ordonnons les non-terminaux ainsi:
+$E, T, F, A$ 
+
+Sommaire:
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\section*{Avec $i = 1$}
+\subsubsection*{j est vide}
+Il faut éliminer toutes les récursions à gauche de $E$ vers le non terminal précédent,
+mais il n'y en a aucun.
+
+\subsubsection*{Cas de base}
+Éliminons la récursions à gauche directe du non-terminal $E$.
+
+\begin{align*}
+    E &\rightarrow T \, E'\\
+    E'&\rightarrow \textbf{ou} \, T \, E' \mid \epsilon\\
+    T &\rightarrow T \, \textbf{et} \, F \mid F\\
+    F &\rightarrow \textbf{faux} \, F \mid A\\
+    A &\rightarrow ( \, E \, ) \, \mid \textbf{faux} \, \mid \textbf{vrai} \, \mid \textbf{id}
+\end{align*}
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\section*{Avec $i = 2$}
+\subsubsection*{Avec $j = 1$}
+Éliminons toutes les récursions à gauche de types $T \rightarrow E...$. Il n'y en a aucun
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+\subsubsection*{Cas de base}
+Éliminons toutes les récursions à gauche directes du non-terminal $T$.
+\begin{align*}
+    E &\rightarrow T \, E'\\
+    E'&\rightarrow \textbf{ou} \, T \, E' \mid \epsilon\\
+    T &\rightarrow F \, T'\\
+    T'&\rightarrow \textbf{et} \, F \, T' \mid \epsilon\\
+    F &\rightarrow \textbf{faux} \, F \mid A\\
+    A &\rightarrow ( \, E \, ) \, \mid \textbf{faux} \, \mid \textbf{vrai} \, \mid \textbf{id}
+\end{align*}
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\section*{Avec $i = 3$}
+\subsubsection*{Avec $j=1$}
+Éliminons toutes les récursions à gauche de types $F \rightarrow E...$. Il n'y en a pas.
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection*{Avec $j=2$}
+Éliminons toutes les récursions à gauche de types $F \rightarrow T...$. Il n'y en a pas.
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection*{Cas de base}
+Éliminons les récursions à gauche directe de $F$. Il n'y en a pas.
+
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FF0000} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\section*{Avec $i = 4$}
+\subsubsection*{Avec $j = 1$}
+Éliminons toutes les récursions à gauche de types $A \rightarrow E...$. Il n'y en a pas.
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FF0000} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection*{Avec $j = 2$}
+Éliminons toutes les récursions à gauche de types $A \rightarrow T...$. Il n'y en a pas.
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FF0000} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+
+\subsubsection*{Avec $j = 3$}
+Éliminons toutes les récursions à gauche de types $A \rightarrow F...$. Il n'y en a pas.
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FF0000} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection*{Cas de base}
+
+Éliminons toutes les récurrences à gauche directe de $A$. Il n'y en a pas.
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|}
+        \cellcolor[HTML]{FFFFFF}                     & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow E...$ &
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow T...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow F...$ & 
+        \cellcolor[HTML]{FFFFFF} $... \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $E \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $E \rightarrow E...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $E \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $T \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $T \rightarrow T...$ & 
+        \cellcolor[HTML]{ABFF00} $T \rightarrow F...$ &
+        \cellcolor[HTML]{ABFF00} $T \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $F \rightarrow ...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow E...$ &
+        \cellcolor[HTML]{FF0000} $F \rightarrow T...$ & 
+        \cellcolor[HTML]{FF0000} $F \rightarrow F...$ & 
+        \cellcolor[HTML]{ABFF00} $F \rightarrow A...$ \\
+    \hline
+        \cellcolor[HTML]{FFFFFF} $A \rightarrow ...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow E...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow T...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow F...$ & 
+        \cellcolor[HTML]{FF0000} $A \rightarrow A...$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+Fin de l'algorithme.
+\begin{align*}
+    E &\rightarrow T \, E'\\
+    E'&\rightarrow \textbf{ou} \, T \, E' \mid \epsilon\\
+    T &\rightarrow F \, T'\\
+    T'&\rightarrow \textbf{et} \, F \, T' \mid \epsilon\\
+    F &\rightarrow \textbf{faux} \, F \mid A\\
+    A &\rightarrow ( \, E \, ) \, \mid \textbf{faux} \, \mid \textbf{vrai} \, \mid \textbf{id}
+\end{align*}
+
 \end{document}
