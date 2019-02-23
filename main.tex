@@ -60,7 +60,6 @@
 %% Autre
 \newcommand{\BigO}{\mathcal{O}}
 \newcommand{\Natural}{\mathbb{N}}
-\lstset{language=C++,basicstyle=\footnotesize\ttfamily}
 \providecommand{\floor}[1]{\left \lfloor #1 \right \rfloor }
 \providecommand{\ceil}[1]{\left \lceil #1 \right \rceil }
 \providecommand{\pars}[1]{\left ( #1 \right ) }
@@ -69,6 +68,24 @@
 \providecommand{\acc}[1]{\left \{ #1 \right \} }
 \providecommand{\lmdev}{\xRightarrow[\text{lm}]{}}
 \providecommand{\rmdev}{\xRightarrow[\text{rm}]{}}
+
+% Code
+\definecolor{mygreen}{HTML}{009900}
+\definecolor{mygray}{HTML}{888888}
+\definecolor{myred}{HTML}{BA281D}
+
+\lstset{
+    language=C++,
+    basicstyle=\footnotesize\ttfamily,
+    firstnumber=1,
+    numberstyle=\tiny\color{mygray},
+    stepnumber=1,
+    numbers=left,  
+    commentstyle=\color{mygreen},
+    keywordstyle=\color{blue},
+    stringstyle=\color{myred}
+    }
+    
 
 \pagestyle{fancy}
 \rhead{Sylvain, Raphaël\\111 124 564} 

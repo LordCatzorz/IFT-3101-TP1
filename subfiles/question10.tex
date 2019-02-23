@@ -3,4 +3,95 @@
 
 \begin{document}
 \section*{Question 10}
+
+\begin{center}
+    \begin{tabular}{|r|r|l|}
+        \hline
+        \multicolumn{1}{|c}{\bf Pile} &
+        \multicolumn{1}{|c|}{\bf Entrée} &
+        \multicolumn{1}{c|}{\bf Sortie} \\
+        \hline
+        \hline
+            $S \, \$ $ & 
+            {\lstinline[]!b b b a a b d c c d d d $!}& 
+            $ S \rightarrow \,$\lstinline[]!b!$\,S\,$\lstinline[]!d!\\
+        \hline
+            \lstinline[]!b!$\,S\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!b b b a a b d c c d d d $!}& 
+            (Consommer le terminal \lstinline[]!b!)\\
+        \hline
+            $S\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!b b a a b d c c d d d $!}& 
+            $ S \rightarrow \,$\lstinline[]!b!$\,S\,$\lstinline[]!d!\\
+        \hline
+            \lstinline[]!b!$\,S\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!b b a a b d c c d d d $!}& 
+            (Consommer le terminal \lstinline[]!b!)\\
+        \hline
+            $S\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!b a a b d c c d d d $!}& 
+            $ S \rightarrow \,$\lstinline[]!b!$\,S\,$\lstinline[]!d!\\
+        \hline
+            \lstinline[]!b!$\,S\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!b a a b d c c d d d $!}& 
+            (Consommer le terminal \lstinline[]!b!)\\
+        \hline
+            $S\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!a a b d c c d d d $!}& 
+            $ S \rightarrow \,$\lstinline[]!a!$\,S\,$\lstinline[]!c!\\
+        \hline
+            \lstinline[]!a!$\,S\,$\lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!a a b d c c d d d $!}& 
+            (Consommer le terminal \lstinline[]!a!)\\
+        \hline
+            $S\,$\lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!a b d c c d d d $!}& 
+            $ S \rightarrow \,$\lstinline[]!a!$\,S\,$\lstinline[]!c!\\
+        \hline
+            \lstinline[]!a!$\,S\,$\lstinline[]!c!$\,$\lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!a b d c c d d d $!}& 
+            (Consommer le terminal \lstinline[]!a!)\\
+        \hline
+            $S\,$\lstinline[]!c!$\,$\lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!b d c c d d d $!}& 
+            $ S \rightarrow \,$\lstinline[]!b!$\,S\,$\lstinline[]!d!\\
+        \hline
+            \lstinline[]!b!$\,S\,$\lstinline[]!d!$\,$\lstinline[]!c!$\,$\lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!b d c c d d d $!}& 
+            (Consommer le terminal \lstinline[]!b!)\\
+        \hline
+            $S\,$\lstinline[]!d!$\,$\lstinline[]!c!$\,$\lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!d c c d d d $!}& 
+            $ S \rightarrow \epsilon $\\
+        \hline
+            \lstinline[]!d!$\,$\lstinline[]!c!$\,$\lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!d c c d d d $!}& 
+            (Consommer le terminal \lstinline[]!d!)\\
+        \hline
+            \lstinline[]!c!$\,$\lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!c c d d d $!}& 
+            (Consommer le terminal \lstinline[]!c!)\\
+        \hline
+            \lstinline[]!c!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!c d d d $!}& 
+            (Consommer le terminal \lstinline[]!c!)\\
+        \hline
+            \lstinline[]!d!$\,$\lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!d d d $!}& 
+            (Consommer le terminal \lstinline[]!d!)\\
+        \hline
+            \lstinline[]!d!$\,$\lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!d d $!}& 
+            (Consommer le terminal \lstinline[]!d!)\\
+        \hline
+            \lstinline[]!d!$\, \$$  & 
+            {\lstinline[]!d $!}& 
+            (Consommer le terminal \lstinline[]!d!)\\
+        \hline
+            $\$$  & 
+            {\lstinline[]!$!}& 
+            (Succès)\\
+        \hline
+    \end{tabular}
+\end{center}
 \end{document}
