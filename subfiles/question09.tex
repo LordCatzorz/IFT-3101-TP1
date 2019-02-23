@@ -3,4 +3,28 @@
 
 \begin{document}
 \section*{Question 9}
+
+\begin{lstlisting}
+    void S()
+    {
+        if (peekToken().type == 'a')
+        {   // S -> aSa
+            readToken('a');
+            S();
+            readToken('a');
+        }
+        else if(peekToken().type == 'b')
+        {   // S -> bSb
+            readToken('b');
+            S();
+            readToken('b');
+        }
+        else 
+        {   // S -> c
+            readToken('c');
+        }
+    }
+
+\end{lstlisting}
+
 \end{document}
