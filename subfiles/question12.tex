@@ -3,4 +3,56 @@
 
 \begin{document}
 \section*{Question 12}
+
+\begin{center}
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \multicolumn{1}{|c}{\bf Production} &
+        \multicolumn{1}{|c}{\bf Étape} &
+        \multicolumn{1}{|l}{\bf Information} &
+        \multicolumn{1}{|l|}{\bf Table d'analyse}\\
+        \hline
+        \hline
+        $A \rightarrow B$   & 2a & $\text{\lstinline{FIRST}}(B) = \acc{a\,,b\,,c}$ & $M[A,a] \ni A \rightarrow B$\\
+        \cline{2-3}          & 2b & $\epsilon \notin \text{\lstinline{FIRST}}(B) \Rightarrow N/A$  & $M[A,b] \ni A \rightarrow B$\\
+                  &  &   & $M[A,c] \ni A \rightarrow B$\\
+        \hline
+        $A \rightarrow dB$   & 2a & $\text{\lstinline{FIRST}}(dB) = \acc{d}$ & $M[A,d] \ni A \rightarrow dB$\\
+        \cline{2-3}          & 2b & $\epsilon \notin \text{\lstinline{FIRST}}(dB) \Rightarrow N/A$  & \\
+        \hline
+        $B \rightarrow cA$   & 2a & $\text{\lstinline{FIRST}}(cA) = \acc{c}$ & $M[B,c] \ni B \rightarrow cA$\\
+        \cline{2-3}          & 2b & $\epsilon \notin \text{\lstinline{FIRST}}(cA) \Rightarrow N/A$  & \\
+        \hline
+        $B \rightarrow Cb$   & 2a & $\text{\lstinline{FIRST}}(Cb) = \acc{a\,,\epsilon}$ & $M[B,a] \ni B \rightarrow Cb$\\
+        \cline{2-3}          & 2b & $\text{\lstinline{FOLLOW}}(B) = \acc{b\,,\$}$  & $M[B,b] \ni B \rightarrow Cb$\\
+                            &  &   & $M[B,\$] \ni B \rightarrow Cb$\\
+        \hline
+        $B \rightarrow a$   & 2a & $\text{\lstinline{FIRST}}(a) = \acc{a}$ & $M[B,a] \ni B \rightarrow a$\\
+        \cline{2-3}          & 2b & $\epsilon \notin \text{\lstinline{FIRST}}(a) \Rightarrow N/A$  & \\
+        \hline
+        $C \rightarrow aB$   & 2a & $\text{\lstinline{FIRST}}(aB) = \acc{a}$ & $M[C,a] \ni C \rightarrow aB$\\
+        \cline{2-3}          & 2b & $\epsilon \notin \text{\lstinline{FIRST}}(aB) \Rightarrow N/A$  & \\
+        \hline
+        $C \rightarrow \epsilon$   & 2a & $\text{\lstinline{FIRST}}(\epsilon) = \acc{\epsilon} \Rightarrow N/A$ & $M[C,b] \ni C \rightarrow \epsilon$ \\
+        \cline{2-3}          & 2b & $\text{\lstinline{FOLLOW}}(C) = \acc{b}$  & \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{|c||c|c|c|c|c|}
+        \hline
+        & $a$ & $b$ & $c$ & $d$ & $\$$\\
+        \hline
+        \hline
+        $A$& $A \rightarrow B$ & $A \rightarrow B $& $A \rightarrow B$ & $A \rightarrow dB$ & \\
+        \hline
+        $B$& $B \rightarrow a$ & $B \rightarrow Cb$ & $B \rightarrow cA$ & & $B \rightarrow Cb$ \\
+           & $B \rightarrow Cb$ & &  & &  \\
+        \hline
+        $C$& $C \rightarrow aB$ & $C \rightarrow \epsilon$ & & & \\
+        \hline
+    \end{tabular}
+\end{center}
+
 \end{document}
