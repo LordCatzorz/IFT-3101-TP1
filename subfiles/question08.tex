@@ -1,10 +1,10 @@
-% !TeX root = ../main.tex
+﻿% !TeX root = ../main.tex
 \documentclass[class=article]{standalone}
 
 \begin{document}
 \section*{Question 8}
 
-Éliminons les récusions à gauche de la grammaires suivantes:
+Éliminons les récursions à gauche de la grammaire suivante:
 \begin{align*}
     E &\rightarrow E \, \textbf{ou} \, T \mid T\\
     T &\rightarrow T \, \textbf{et} \, F \mid F\\
@@ -53,11 +53,11 @@ Sommaire:
 
 \section*{Avec $i = 1$}
 \subsubsection*{j est vide}
-Il faut éliminer toutes les récursions à gauche de $E$ vers le non terminal précédent,
+Il faut éliminer toutes les récursions à gauche de $E$ vers le non-terminal précédent,
 mais il n'y en a aucun.
 
 \subsubsection*{Cas de base}
-Éliminons la récursions à gauche directe du non-terminal $E$.
+Éliminons la récursion à gauche directe du non-terminal $E$.
 
 \begin{align*}
     E &\rightarrow T \, E'\\
