@@ -3,4 +3,103 @@
 
 \begin{document}
 \section*{Question 11}
+
+Calcul de l'ensemble \lstinline{FIRST}(S)
+
+\begin{deriv}
+    \text{\lstinline{FIRST}}(S)
+    \<=
+    \commentaire{Toutes les productions de $S$}
+    \text{\lstinline{FIRST}}(\epsilon) \, \cup \,
+        \text{\lstinline{FIRST}}(aSaSb) \, \cup \,
+        \text{\lstinline{FIRST}}(aSbSa) \, \cup \,
+        \text{\lstinline{FIRST}}(bSaSa) \, \cup \,
+        \text{\lstinline{FIRST}}(SS)
+    \<=
+    \commentaire{\lstinline{FIRST}$(SS) =$ \lstinline{FIRST}$(S)$}
+    \text{\lstinline{FIRST}}(\epsilon) \, \cup \,
+        \text{\lstinline{FIRST}}(aSaSb) \, \cup \,
+        \text{\lstinline{FIRST}}(aSbSa) \, \cup \,
+        \text{\lstinline{FIRST}}(bSaSa)
+    \<=
+    \commentaire{\lstinline{FIRST}$(\epsilon) = \acc{\epsilon}$}
+    \acc{\epsilon} \, \cup \,
+        \text{\lstinline{FIRST}}(aSaSb) \, \cup \,
+        \text{\lstinline{FIRST}}(aSbSa) \, \cup \,
+        \text{\lstinline{FIRST}}(bSaSa)
+    \<=
+    \commentaire{\lstinline{FIRST}$(a\alpha) = \acc{a}$}
+    \acc{\epsilon} \, \cup \,
+        \acc{a} \, \cup \,
+        \acc{a} \, \cup \,
+        \text{\lstinline{FIRST}}(bSaSa)
+    \<=
+    \commentaire{\lstinline{FIRST}$(b\alpha) = \acc{b}$}
+    \acc{\epsilon} \, \cup \,
+        \acc{a} \, \cup \,
+        \acc{a} \, \cup \,
+        \acc{b}
+    \<=
+    \commentaire{Union}
+    \acc{a \, , b \, , \epsilon}
+\end{deriv}
+
+Calcul de l'ensemble \lstinline{FOLLOW}(S)
+
+La première règle. $S$ est le symbole de départ.
+\begin{center}
+\lstinline{FOLLOW}$(S) \supseteq \acc{\$}$
+\end{center}
+
+Calcul des $2^e$ règles
+
+\begin{center}
+    \begin{tabular}{|rl|rlllll|}
+        \hline
+        \multicolumn{2}{|c}{\bf Symbole} &
+        \multicolumn{6}{|c|}{\bf Contraintes identifiées}\\
+        \hline
+        \hline
+        $S$ & $\rightarrow a\underline{S}aSb$ & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FIRST}}(a)$ & $- \acc{\epsilon}$ & $= \acc{a}$ & $- \acc{\epsilon}$ & $= \acc{a}$\\
+        $S$ & $\rightarrow aSa\underline{S}b$ & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FIRST}}(b)$ & $- \acc{\epsilon}$ & $= \acc{b}$ & $- \acc{\epsilon}$ & $= \acc{b}$\\
+        \hline
+        $S$ & $\rightarrow a\underline{S}bSa$ & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FIRST}}(b)$ & $- \acc{\epsilon}$ & $= \acc{b}$ & $- \acc{\epsilon}$ & $= \acc{b}$\\
+        $S$ & $\rightarrow aSb\underline{S}a$ & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FIRST}}(a)$ & $- \acc{\epsilon}$ & $= \acc{a}$ & $- \acc{\epsilon}$ & $= \acc{a}$\\
+        \hline
+        $S$ & $\rightarrow b\underline{S}aSa$ & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FIRST}}(a)$ & $- \acc{\epsilon}$ & $= \acc{a}$ & $- \acc{\epsilon}$ & $= \acc{a}$\\
+        $S$ & $\rightarrow bSa\underline{S}a$ & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FIRST}}(a)$ & $- \acc{\epsilon}$ & $= \acc{a}$ & $- \acc{\epsilon}$ & $= \acc{a}$\\
+        \hline
+        $S$ & $\rightarrow \underline{S}S$ & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FIRST}}(S)$         & $- \acc{\epsilon}$ & $= \acc{a \, , b \, , \epsilon}$ & $- \acc{\epsilon}$ & $= \acc{a \, , b}$\\
+        $S$ & $\rightarrow S\underline{S}$ & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FIRST}}(\epsilon)$ & $- \acc{\epsilon}$  & $= \acc{\epsilon}$                & $- \acc{\epsilon}$ & $= \acc{}$\\
+        \hline
+    \end{tabular}
+\end{center}
+\pagebreak
+Calcul des $3^e$ règles
+\begin{center}
+    \begin{tabular}{|rl|l|rl|}
+        \hline
+        \multicolumn{2}{|c}{\bf Symbole} &
+        \multicolumn{1}{|c}{\bf Justification} &
+        \multicolumn{2}{|c|}{\bf Contraintes identifiées}\\
+        \hline
+        \hline
+        $S$ & $\rightarrow a\underline{S}aSb$ & - & - & \\
+        $S$ & $\rightarrow aSa\underline{S}b$ & - & - &\\
+        \hline
+        $S$ & $\rightarrow a\underline{S}bSa$ & - & - &\\
+        $S$ & $\rightarrow aSb\underline{S}a$ & - & - &\\
+        \hline
+        $S$ & $\rightarrow b\underline{S}aSa$ & - & - &\\
+        $S$ & $\rightarrow bSa\underline{S}a$ & - & - &\\
+        \hline
+        $S$ & $\rightarrow \underline{S}S$ & Suivi d'un symbole annulable & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FOLLOW}}(S)$\\
+        $S$ & $\rightarrow S\underline{S}$ & Situé à la fin & $\text{\lstinline{FOLLOW}}(S)$ & $\supseteq \text{\lstinline{FOLLOW}}(S)$\\
+        \hline
+    \end{tabular}
+\end{center}
+
+Plus petite solution:
+
+$\text{\lstinline{FOLLOW}}(S) = \acc{a \, , b \, ,\$}$
 \end{document}
